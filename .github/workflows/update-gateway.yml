@@ -9,21 +9,19 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write    # Changed to 'write' so it can save updates to your repository
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          ref: personal
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.14.5'
+          python-version: '3.11'
 
       - name: Cache pip packages
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-requests-aiohttp
